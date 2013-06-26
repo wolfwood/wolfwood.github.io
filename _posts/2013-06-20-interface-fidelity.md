@@ -27,22 +27,22 @@ libraries specifically to constrain expression, often under the banners
 of simplicity and/or correctness.
 
 We can think of a higher-level, destination interface as a compression
-of a low-level source interface. While matters are complicated but
+of a low-level source interface. While matters are complicated by
 state that may be hidden in the interface, the intuition is that if
 every source symbol has a corresponding destination symbol, the
 compression is lossless, and the interfaces are of equal
 expressiveness. A necessary but not sufficient shortcut for these kind
 of examinations is: if the number of states (symbols) for the
-low-level interface as grater than for the high-level one, they cannot
+low-level interface is greater than for the high-level one, they cannot
 have the same expressive power.
 
 The XOmB kernel attempts to provide lossless interfaces to hardware.
-It does so with two important design feature.  The first is
+It does so with two important design features.  The first is
 statelessness, this simplifies matters because the only state is that
 which resides in the source interface.  The second is direct exposure
 of the hardware to the greatest extent possible. the combination of the
 two make a comparison of expressiveness trivial, because the
-interfaces are the same. This is in stark contrast so POSIX-compliant
+interfaces are the same. This is in stark contrast to POSIX-compliant
 systems, where the interfaces are so complex, stateful and dissimilar
 to hardware that it is difficult to know where to start in trying to
 make similar evaluations.
