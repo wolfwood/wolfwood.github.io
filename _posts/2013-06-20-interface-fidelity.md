@@ -14,7 +14,7 @@ artifacts is [quantization][quant].
 
 Regardless of encoding method, given enough bits (upping bits per
 sample or sample rate) we can arbitrarily bound the error. This is the
-marvelous hermineutic of the digital: it maintains that given enough
+marvelous hermeneutic of the digital: it maintains that given enough
 bits, nothing lies outside itself... the dream is real.
 
 Writing a library, Operating System, etc. that offers an interface can
