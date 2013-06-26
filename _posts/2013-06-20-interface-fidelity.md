@@ -15,21 +15,23 @@ artifacts is [quantization][quant].
 Regardless of encoding method, given enough bits (upping bits per
 sample or sample rate) we can arbitrarily bound the error. This is the
 marvelous hermineutic of the digital: it maintains that given enough
-bits, nothing lies outside itself.
+bits, nothing lies outside itself... the dream is real.
 
 Writing a library, Operating System, etc. that offers an interface can
-present comparable fidelity issues. There is the source interface
-(hardware in the case of an OS, a drawing primitive library like Cairo
-for a window toolkit like GTK+) and the 'destination' interface: the
-interface that the software presents to yet higher levels of software.
+present comparable fidelity issues, but without such a trivial
+remedy. We are taking a digital artifact, and incorporating it into a
+larger artifact.  There is the source interface (hardware in the case
+of an OS, a drawing primitive library like Cairo for a window toolkit
+like GTK+) and the 'destination' interface: the interface that the
+software presents to yet higher levels of software.
 
 There is no inherent reason to expect that the two levels of interface
 present the same level of expressive power, in fact we often write
 libraries specifically to constrain expression, often under the
 banners of simplicity and/or correctness. However low-level privileged
 code (which is forced upon all users) has a special need to retain as
-much flexibility as possible, since its interface is mandated, and
-generally the tension between expressiveness and ease of use is the
+much flexibility as possible, since its interface is mandated. In
+addition, the tension between expressiveness and ease of use is the
 main source of our continual production and rewriting of libraries
 providing these interfaces.
 
