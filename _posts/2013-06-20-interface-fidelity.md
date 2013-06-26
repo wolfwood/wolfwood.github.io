@@ -19,11 +19,12 @@ bits, nothing lies outside itself... the dream is real.
 
 Writing a library, Operating System, etc. that offers an interface can
 present comparable fidelity issues, but without such a trivial
-remedy. We are taking a digital artifact, and incorporating it into a
-larger artifact.  There is the source interface (hardware in the case
-of an OS, a drawing primitive library like Cairo for a window toolkit
-like GTK+) and the 'destination' interface: the interface that the
-software presents to yet higher levels of software.
+remedy. We are taking a computational digital artifact (rather than
+just media), and incorporating it into a larger artifact.  There is
+the source interface (hardware in the case of an OS, a drawing
+primitive library like Cairo for a window toolkit like GTK+) and the
+'destination' interface: the interface that the software presents to
+yet higher levels of software.
 
 There is no inherent reason to expect that the two levels of interface
 present the same level of expressive power, in fact we often write
