@@ -13,7 +13,9 @@ artifacts is [quantization][quant].
 ![Quantization Error](http://upload.wikimedia.org/wikipedia/commons/2/22/Quanterr.png)
 
 Regardless of encoding method, given enough bits (upping bits per
-sample or sample rate) we can arbitrarily bound the error.
+sample or sample rate) we can arbitrarily bound the error. This is the
+marvelous hermineutic of the digital: it maintains that given enough
+bits, nothing lies outside itself.
 
 Writing a library, Operating System, etc. that offers an interface can
 present comparable fidelity issues. There is the source interface
@@ -23,8 +25,13 @@ interface that the software presents to yet higher levels of software.
 
 There is no inherent reason to expect that the two levels of interface
 present the same level of expressive power, in fact we often write
-libraries specifically to constrain expression, often under the banners
-of simplicity and/or correctness.
+libraries specifically to constrain expression, often under the
+banners of simplicity and/or correctness. However low-level privileged
+code (which is forced upon all users) has a special need to retain as
+much flexibility as possible, since its interface is mandated, and
+generally the tension between expressiveness and ease of use is the
+main source of our continual production and rewriting of libraries
+providing these interfaces.
 
 To discuss expressivity I think the best formal grounding is
 information theory. We can think of a higher-level, destination
