@@ -1,4 +1,4 @@
 <figure class="image" style="float:{{ include.align | default: none }}">
-  <img src="{{ include.url }}" alt="{{ include.description }}" height="{{ include.height }}">
+  <img src="{{ include.url }}" alt="{{ include.description }}" height="{{ include.height | default: auto }}">
   <figcaption style="font-weight:bold;text-align: center">{{ include.description }}</figcaption>
 </figure>
