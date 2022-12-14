@@ -19,21 +19,21 @@ The [improved square (or round-robin) matrix](https://kbd.news/Improved-square-m
 ## Low Power Mode
 Pete Johanson raised the difficulty in supporting a low power keyboard mode at the time of the original KBD.news post about the round robin matrix. He has since expanded on it as part of his [excellent piece on designing keyboards for wireless connectivity and low power use](https://kbd.news/Designing-for-Wireless-1784.html).
 
-Power use is a significant concern for battery-powered wireless keyboards, which aim to extend their battery life as long as possible. Keyboards spend a significant amount of time idle and therefore signficant power can be saved by putting the CPU to sleep. However, there must be a way to detect when a key is pressed and wake the sleeping keyboard controller back up.
+Power use is a significant concern for battery-powered wireless keyboards, which aim to extend their battery life as long as possible. Keyboards spend a significant amount of time idle and therefore significant power can be saved by putting the CPU to sleep. However, there must be a way to detect when a key is pressed and wake the sleeping keyboard controller back up.
 
 The approach used on a traditional matrix, which is illustrated in detail in Pete's post, is to enable interrupts on the input pins and to set _all_ output pins to high at once. This ensures that if any key is pressed, the CPU will be awoken. Note that because all the output pins are high, the interrupt will not be informative as to which key was pressed, so the keyboard must resume scanning the matrix as usual. Interrupts are not a substitute for scanning a matrix, just a means to resume it.
 
 ## Low Power Mode for the Improved Square Matrix
 With the improved square matrix, its easy to see how to listen for keypresses: we must treat all pins as inputs, pulling them low and enabling interrupts. However, this leaves us unsure about the other part: how do we connect the other side of the switches to a detectable voltage?
 
-{% include image.html url="/images/2022-13-08/4-pin-improved-square-matrix-low-power.png" description="additonal wire and diodes on the left side"  height="500" align="right" %}
+{% include image.html url="/images/2022-13-08/4-pin-improved-square-matrix-low-power.png" description="additional wire and diodes on the left side"  height="500" align="right" %}
 
 
 The improved matrix makes this possible, both to visualize and to implement, by separating the output segments (rows, in this illustration) from the input segments (columns) by a diode, with the GPIO pins on the input side. We can add a single additional pin to supply a voltage to all the output segments, using diodes to prevent them from becoming connected during normal matrix scanning.
 
 With the additional pin pulled low, scanning can be done as normal. When it is time for the CPU to sleep, we pull the new pin high and configure the other pins as low inputs with interrupts enabled. Any keypress will wake the CPU, as with the traditional matrix low power mode.
 
-We don't need to worry that the new diodes will drop the voltage below the voltage threshold, as they subsitute for the diodes the improved matrix introduced to combat ghosting. If the matrix registers keypresses correctly, then the low power mode will as well.
+We don't need to worry that the new diodes will drop the voltage below the voltage threshold, as they substitute for the diodes the improved matrix introduced to combat ghosting. If the matrix registers keypresses correctly, then the low power mode will as well.
 
 This technique does require an additional GPIO pin, but given the large number of pins saved compared to a traditional matrix it seems a small price to pay.
 
