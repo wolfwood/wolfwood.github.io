@@ -15,6 +15,7 @@ A keyboard matrix is a way of detecting key presses without wiring each switch t
 {% include image.html url="/images/2022-13-08/4-pin-improved-square-matrix.png" description="an improved square matrix, from KBD.news" height="500" align="right" %}
 
 The [improved square (or round-robin) matrix](https://kbd.news/Improved-square-matrix-1415.html) is a method of sensing switch activations using the fewest number of GPIO pins possible (as far as we know). The key insight is that rather than statically assigning pins as inputs or outputs (and rows and columns), we can dynamically reconfigure them to serve both roles, with the caveat that a switch cannot have the same pin as both input and output. The extra connectedness, compared to a traditional matrix also means more opportunities for ghosting ([see the precursor write up on the round robin matrix for details](https://kbd.news/Square-or-round-robin-matrix-1400.html)). This can be addressed with larger voltage drops either by using diodes with higher values, or by doubling up on the 1N4148 diodes traditionally used. The improved version observes that rather than using 2 diodes per switch, we can 'factor out' one diode and instead use a one diode per GPIO pin, between input (or column, in these diagrams) segment and the output (or row) segment.
+<br style="clear:right" />
 
 ## Saving Power with Interrupt Mode
 Pete Johanson raised the difficulty in supporting a low power keyboard mode at the time of the original KBD.news post about the round robin matrix. He has since expanded on it as part of his [excellent piece on designing keyboards for wireless connectivity and low power use](https://kbd.news/Designing-for-Wireless-1784.html).
@@ -26,8 +27,8 @@ The approach used on a traditional matrix, which is illustrated in detail in Pet
 ## Interrupt Mode for the Improved Square Matrix
 With the improved square matrix, its easy to see how to listen for keypresses: we must treat all pins as inputs, pulling them low and enabling interrupts. However, this leaves us unsure about the other part: how do we connect the other side of the switches to a detectable voltage?
 
-![the left side of the schematic shows my proposed addition to the square matrix circuit](/images/2022-13-08/4-pin-improved-square-matrix-low-power.png){:  height="500"}
-**the left side of the schematic shows my proposed addition to the square matrix circuit**
+{% include image.html url="/images/2022-13-08/4-pin-improved-square-matrix-low-power.png" description="the left side of the schematic shows my proposed addition to the square matrix circuit"  height="500" align="right" %}
+
 
 The improved matrix makes this possible by separating the output segments (rows in this illustration) from the input segments (columns) by a diode, with the GPIO pins on the input side. We can add a single additional pin to supply a voltage to all the output segments, using diodes to prevent them from from becoming connected during normal matrix scanning.
 
