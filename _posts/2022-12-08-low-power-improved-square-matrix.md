@@ -33,9 +33,11 @@ The improved matrix makes this possible by separating the output segments (rows 
 
 With the additional pin pulled low, scanning can be done as normal. When it is time for the CPU to sleep, we pull the new pin high and configure the other pins as low inputs with interrupts enabled. Any keypress will wake the CPU, as with the traditional matrix low power mode.
 
-We also don't need to worry that the new diodes will drop the voltage below the voltage threshold, as they subsitute for the diodes the improved matrix introduced to combat ghosting. If the matrix registers keypresses correctly, then the interrupt mode will as well.
+We don't need to worry that the new diodes will drop the voltage below the voltage threshold, as they subsitute for the diodes the improved matrix introduced to combat ghosting. If the matrix registers keypresses correctly, then the interrupt mode will as well.
 
-I've written this post to get feedback on any potential deficiencies with the interrupt mode proposal, and to share this idea to help us save both pins and power. I hope we will all treat power-savings as a goal, even on our wired keyboards.
+This technique does require an additional GPIO pin, but given the large number of pins saved compared to a traditional matrix it seems a small price to pay.
+
+I've written this post to get feedback on any potential deficiencies with the interrupt mode proposal, and to share this idea to help us save both pins and power. I hope we will all treat power-savings as a goal in the future, even on our wired keyboards.
 
 #### Coda: A Personal Plea for More Pins
 I hope that microcontroller board designers will not use the efficiencies granted by the improved square matrix as justification to produce boards with even fewer pins broken out. Being able to direct wire switches for handwired split keyboards has made experimentation significantly easier, but folks keep sticking new MCUs into tiny footprints. I understand the desire to retain compatibility, but I hope people take inspiration from the Proton-C and break out addition GPIOs on a snap-off extension (sadly, the Proton-C still only exposes 23 of 37 GPIOs). Matrix tricks are cool, but not as cool as never needing to use one :)
