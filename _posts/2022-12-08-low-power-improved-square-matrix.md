@@ -6,7 +6,7 @@ layout: post
 This post proposes a modification to the improved square keyboard matrix in order to support a low power wake-on-keypress mode, which has been a deficiency of this design until now.
 
 ## Keyboard Matrix Background
-{% include image.html url="/images/2022-13-08/keyboard-matrix-6x2-col2row.png" description="an illustration of a keyboard matrix, borrowed from dovenyi's KBD.news duplex matrix explainer" %}
+{% include image.html url="/images/2022-13-08/keyboard-matrix-6x2-col2row.png" description="an illustration of a keyboard matrix, borrowed from *dovenyi*'s KBD.news duplex matrix explainer" %}
 
 A keyboard matrix is a way of detecting key presses without wiring each switch to its own GPIO pin on the micrcocontroller. This is important because pins are a somewhat scarce resource, and when higher pin count versions of a given chip are available they are more expensive. The basic approach is to arrange switches in a grid with one side connected to a row wire and one to a column wire. One pin is assigned to each row and column wire. Either rows or columns are chosen as inputs and the other as outputs. One output pin is set high at a time and then the inputs are read to detect closed switches (keypresses). This is known as scanning the matrix. To properly detect multiple simultaneous keypresses, each switch must be wired in series with a diode so that current can't flow "backward" through switches assigned to different output pins than the currently active one, which could otherwise create ghost keypresses.
 
