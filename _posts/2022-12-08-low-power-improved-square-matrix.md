@@ -26,7 +26,7 @@ The approach used on a traditional matrix, which is illustrated in detail in Pet
 ## Interrupt Mode for the Improved Square Matrix
 With the improved square matrix, its easy to see how to listen for keypresses: we must treat all pins as inputs, pulling them low and enabling interrupts. However, this leaves us unsure about the other part: how do we connect the other side of the switches to a detectable voltage?
 
-{% include image.html url="/images/2022-13-08/4-pin-improved-square-matrix-low-power.png" description="the left side of the schematic shows my proposed addition to the square matrix circuit"  height="580" align="right" %}
+{% include image.html url="/images/2022-13-08/4-pin-improved-square-matrix-low-power.png" description="additonal wire and diodes on the left side"  height="500" align="right" %}
 
 
 The improved matrix makes this possible by separating the output segments (rows in this illustration) from the input segments (columns) by a diode, with the GPIO pins on the input side. We can add a single additional pin to supply a voltage to all the output segments, using diodes to prevent them from from becoming connected during normal matrix scanning.
