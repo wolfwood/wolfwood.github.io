@@ -1,4 +1,4 @@
-<figure class="image" style="float:{{ include.align | default: none }}">
+<figure class="image" style="text-align: center;float:{{ include.align | default: none }}">
   <img src="{{ include.url }}" alt="{{ include.description | markdownify | strip_html }}" height="{{ include.height | default: auto }}" width="auto">
   <figcaption style="font-weight:bold;text-align: center">{{ include.description | markdownify }}</figcaption>
 </figure>
