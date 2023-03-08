@@ -38,12 +38,11 @@ We don't need to worry that the new diodes will drop the voltage below the volta
 This technique does require an additional GPIO pin, but given the large number of pins saved compared to a traditional matrix it seems a small price to pay.
 
 ### A Reciprocal Matrix
-{% include image.html url="https://user-images.githubusercontent.com/14353068/197652574-366b4e58-95fd-4928-b159-9d81f9853a63.png" description="another low power proposal, by HookyQR" %}
+{% include image.html url="https://user-images.githubusercontent.com/117450225/222876650-c43c41bb-0473-49f2-b394-cd90c8bbdff7.png" description="another low power proposal, by HookyKB" %}
 
-After publishing this post, Pete pointed me at [a ZMK pull request that also tackled the issue of low power mode for an improved square matrix](https://github.com/zmkfirmware/zmk/pull/1507). This proposal starts with a different orientation of the square matrix. Pins are connected to the output segments of wires, and then connected to the input segment by a diode (facing toward the pin instead of away from the pin). This sets us up to enter low power mode with all pins set as high outputs. We then need a way to detect a keypress. We can connect all the input segments to a single pin, using diodes to prevent inputs from being directly connected to each other. This pin can be configured as an interrupt when in low power mode and disregarded at other times.
+After publishing this post, Pete pointed me at [a ZMK pull request that also tackled the issue of low power mode for an improved square matrix](https://github.com/zmkfirmware/zmk/pull/1694). This proposal starts with a different orientation of the square matrix. Pins are connected to the output segments of wires, and then connected to the input segment by a diode (facing toward the pin instead of away from the pin). This sets us up to enter low power mode with all pins set as high outputs. We then need a way to detect a keypress. We can connect all the input segments to a single pin, using diodes to prevent inputs from being directly connected to each other. This pin can be configured as an interrupt when in low power mode and disregarded at other times.
 
 This design and the one above are the perfect duals of each other. They both accomplish the same task, as mirror opposites. If not all GPIOs are interrupt capable then this design might be preferable, otherwise there is little practical difference to distinguish them.
-
 
 ## Conclusion
 I've written this post to get feedback on any potential deficiencies with the low power mode proposal, and to share this idea to help us save both pins and power. I hope we will all treat power-savings as a goal in the future, even on wired keyboards.
