@@ -65,8 +65,8 @@ claims.  The expressive equivalence of XOmB is so obvious I debated
 whether this post was worth writing at all. However, I think we need
 to think more about how we make claims about interfaces, particularly
 in light of wilkie's [discussion of interface
-design](http://blog.davewilkinsonii.com/posts/a-language-for-interfaces)
+design](http://wilkie.how/posts/a-language-for-interfaces)
 and our [joint frustration with the way we currently mis-evaluate
-software designs](http://blog.davewilkinsonii.com/posts/kaashoeks-law).
+software designs](http://wilkie.how/posts/kaashoeks-law).
 
 <3
