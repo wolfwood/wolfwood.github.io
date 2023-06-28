@@ -1,6 +1,7 @@
 ---
 layout: post
 ---
+*A previous version of this article was [republished on kbd.news](https://kbd.news/Low-Power-Improved-Square-Matrix-1810.html)*
 # {{ page.title }}
 
 <!-- begin_excerpt -->
