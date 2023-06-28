@@ -1,6 +1,9 @@
 ---
 layout: post
 ---
+
+Systems software can often be viewed as consuming a set of interfaces and presenting a higher level interface. A potential consumer of the higher level interface is often implicitly interested in what is lost in the translation.
+
 # {{ page.title }}
 
 When people speak of digitization, of media, the humanities, the

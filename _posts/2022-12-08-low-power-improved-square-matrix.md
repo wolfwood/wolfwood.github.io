@@ -3,7 +3,9 @@ layout: post
 ---
 # {{ page.title }}
 
+<!-- begin_excerpt -->
 This post proposes a modification to the improved square keyboard matrix in order to support a low power wake-on-keypress mode, which has been a deficiency of this design until now.
+<!-- end_excerpt -->
 
 ## Keyboard Matrix Background
 {% include image.html url="/images/2022-13-08/keyboard-matrix-6x2-col2row.png" description="an illustration of a keyboard matrix, borrowed from *dovenyi*'s [KBD.news duplex matrix explainer](https://kbd.news/The-Japanese-duplex-matrix-1391.html)" %}

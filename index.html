@@ -7,6 +7,12 @@
   {% for post in site.posts %}
     <li>
       <a href="{{ post.url }}">{{ post.title }}</a>
-    </li>
+
+      {% if post.content contains "<!-- begin_excerpt -->" %}
+        {{ post.content | split: "<!-- end_excerpt -->" | first | split: "<!-- begin_excerpt -->" | last }}
+      {% else %}
+        {{ post.excerpt }}
+      {% endif %}
+    </li><br>
   {% endfor %}
 </ul>
